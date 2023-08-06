@@ -6,6 +6,21 @@ dotenv.config();
 
 const app = express()
 
+
+const apiKey = 'YOUR_API_KEY';
+const text = 'This is a sample text to analyze';
+
+fetch(`https://api.meaningcloud.com/sentiment-2.1?key=${process.env.API_KEY}&lang=en&url=${text}`)
+  .then(response => response.json())
+  .then(data => {
+    // Process the response data
+    console.log(data);
+  })
+  .catch(error => {
+    // Handle any errors
+    console.error(error);
+  });
+
 app.use(express.static('dist'))
 console.log(__dirname)
 
